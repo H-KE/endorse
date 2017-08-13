@@ -1,10 +1,12 @@
 import EndorseTokenContract from '../../../../build/contracts/EndorseToken.json'
+import EndorseTokenFactoryContract from '../../../../build/contracts/EndorseTokenFactory.json'
+
 
 import React, { Component } from 'react'
 import store from '../../../store'
 
 const contract = require('truffle-contract')
-const EndorseTokenAddress = "0x4afab8a639366ebc39eda3613867848f9d89c787"
+const EndorseTokenAddress = "0x0803746fcc5b36f380e73a9e92f3e86531f49772"
 
 class TokenOverview extends Component {
   constructor(props) {
@@ -43,16 +45,27 @@ class TokenOverview extends Component {
             console.log(coinbase + ': ' + result.valueOf())
             component.setState({ balance: result.valueOf() })
           })
-
-        // accs.forEach(function(acc) {
-        //
-        //
-        //   endorseTokenInstance.created(acc, 0).then(function(result) {
-        //     console.log(acc + ': ' + result.valueOf())
-        //   })
-        // })
+        })
       })
-    })
+
+
+    // // Using truffle-contract we create the authentication object.
+    // const EndorseTokenFactory = contract(EndorseTokenFactoryContract)
+    // EndorseTokenFactory.setProvider(web3.currentProvider)
+    //
+    // // Declaring this for later so we can chain functions on Authentication.
+    // var endorseTokenFactoryInstance
+    //   web3.eth.getAccounts((error, accs) => {
+    //     accs.forEach(function(acc) {
+    //
+    //     EndorseTokenFactory.deployed().then(function(instance) {
+    //       endorseTokenFactoryInstance = instance
+    //       endorseTokenFactoryInstance.created(acc, 0).then(function(result) {
+    //         console.log(acc + ': ' + result.valueOf())
+    //       })
+    //     })
+    //   })
+    // })
   }
 
   render() {
