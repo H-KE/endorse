@@ -1,4 +1,4 @@
-pragma solidity ^0.4.14;
+pragma solidity ^0.4.13;
 
 import "./EndorseToken.sol";
 import "./EndorseProject.sol";
@@ -17,12 +17,12 @@ contract EndorseProjectFactory {
     }
 
     function createProject (address _host,
-                            uint _endorsePeriodEnd,
-                            uint _competitionEnd,
-                            uint _minimumDORS,
+                            /*uint _endorsePeriodEnd,*/
+                            /*uint _competitionEnd,*/
+                            /*uint _minimumDORS,*/
                             string _projectName,
                             string _projectDescription) onlyBy(owner) returns (address) {
-      EndorseProject project = (new EndorseProject(_host, endorseTokenAddress, _endorsePeriodEnd, _competitionEnd, _minimumDORS, _projectName, _projectDescription));
+      EndorseProject project = (new EndorseProject(_host, endorseTokenAddress, _projectName, _projectDescription));
       projects.push(address(project));
       return address(project);
     }

@@ -10,7 +10,7 @@ contract EndorseTokenFactory {
 
     function EndorseTokenFactory() {
       //upon creation of the factory, deploy a EndorseToken (parameters are meaningless) and store the bytecode provably.
-      address verifiedToken = createEndorseToken(10000000, "Endorse Token", 3, "DORS");
+      address verifiedToken = createEndorseToken(1000000000, "Endorse Token", 3, "DORS");
       endorseByteCode = codeAt(verifiedToken);
     }
 
@@ -52,7 +52,6 @@ contract EndorseTokenFactory {
     }
 
     function createEndorseToken(uint256 _initialAmount, string _name, uint8 _decimals, string _symbol) returns (address) {
-
         EndorseToken newToken = (new EndorseToken(_initialAmount, _name, _decimals, _symbol));
         created[msg.sender].push(address(newToken));
         isEndorseToken[address(newToken)] = true;

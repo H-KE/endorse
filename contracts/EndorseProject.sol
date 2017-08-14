@@ -1,4 +1,4 @@
-pragma solidity ^0.4.14;
+pragma solidity ^0.4.13;
 import "./EndorseToken.sol";
 
 /// Simple contract that collects money, keeps them till the certain birthday
@@ -24,17 +24,17 @@ contract EndorseProject {
     /// Instantiate the contract with given recipient and birthday time.
     function EndorseProject(address _host,
                             address _endorseToken,
-                            uint _endorsePeriodEnd,
-                            uint _competitionEnd,
-                            uint _minimumDORS,
+                            /*uint _endorsePeriodEnd,*/
+                            /*uint _competitionEnd,*/
+                            /*uint _minimumDORS,*/
                             string _projectName,
                             string _projectDescription) {
         projectHost = _host;
         projectName = _projectName;
         projectDescription = _projectDescription;
-        endorsePeriodEnd = _endorsePeriodEnd;
+        /*endorsePeriodEnd = _endorsePeriodEnd;
         competitionEnd = _competitionEnd;
-        minimumDORS = _minimumDORS;
+        minimumDORS = _minimumDORS;*/
         totalEndorsement = 0;
         endorseToken = _endorseToken;
     }

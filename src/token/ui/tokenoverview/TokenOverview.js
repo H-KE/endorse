@@ -6,7 +6,7 @@ import React, { Component } from 'react'
 import store from '../../../store'
 
 const contract = require('truffle-contract')
-const EndorseTokenAddress = "0x0803746fcc5b36f380e73a9e92f3e86531f49772"
+// const EndorseTokenAddress = "0x0803746fcc5b36f380e73a9e92f3e86531f49772"
 
 class TokenOverview extends Component {
   constructor(props) {
@@ -38,9 +38,9 @@ class TokenOverview extends Component {
         console.error(error);
       }
 
-      EndorseToken.at(EndorseTokenAddress).then(function(instance) {
+      EndorseToken.deployed().then(function(instance) {
         endorseTokenInstance = instance
-        endorseTokenInstance.balanceOf(coinbase, { from: coinbase} )
+        endorseTokenInstance.balanceOf.call(coinbase, { from: coinbase} )
           .then(function(result) {
             console.log(coinbase + ': ' + result.valueOf())
             component.setState({ balance: result.valueOf() })
@@ -48,12 +48,6 @@ class TokenOverview extends Component {
         })
       })
 
-
-    // // Using truffle-contract we create the authentication object.
-    // const EndorseTokenFactory = contract(EndorseTokenFactoryContract)
-    // EndorseTokenFactory.setProvider(web3.currentProvider)
-    //
-    // // Declaring this for later so we can chain functions on Authentication.
     // var endorseTokenFactoryInstance
     //   web3.eth.getAccounts((error, accs) => {
     //     accs.forEach(function(acc) {
